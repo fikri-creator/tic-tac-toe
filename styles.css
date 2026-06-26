@@ -1,0 +1,167 @@
+/* filepath: styles.css */
+
+:root {
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --panel-2: #334155;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent-x: #38bdf8;
+  --accent-o: #f472b6;
+  --accent-win: #facc15;
+  --accent-tie: #a3a3a3;
+  --border: #475569;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at top, #1e293b, var(--bg));
+  color: var(--text);
+  font-family: "Segoe UI", Roboto, system-ui, -apple-system, sans-serif;
+}
+
+.app {
+  max-width: 480px;
+  margin: 48px auto;
+  padding: 24px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 16px;
+  letter-spacing: 1px;
+  font-size: 2rem;
+}
+
+.player-form {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: end;
+  box-shadow: var(--shadow);
+}
+
+.player-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: left;
+}
+
+.player-form input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.player-form input:focus {
+  outline: 2px solid var(--accent-x);
+  outline-offset: 2px;
+}
+
+#start-btn {
+  grid-column: 1 / -1;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent-x), var(--accent-o));
+  color: #0b1220;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+#start-btn:hover {
+  transform: translateY(-1px);
+}
+
+#start-btn:active {
+  transform: translateY(0);
+}
+
+.status {
+  margin: 20px 0 12px;
+  font-size: 1.15rem;
+  min-height: 1.5em;
+  color: var(--muted);
+}
+
+.status.winner {
+  color: var(--accent-win);
+  font-weight: 700;
+}
+
+.status.tie {
+  color: var(--accent-tie);
+  font-weight: 700;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background: var(--panel);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.cell {
+  aspect-ratio: 1 / 1;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 700;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, transform 0.1s ease;
+  padding: 0;
+}
+
+.cell:hover:not(:disabled) {
+  background: #475569;
+}
+
+.cell:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.cell:disabled {
+  cursor: not-allowed;
+  opacity: 0.95;
+}
+
+.cell.x {
+  color: var(--accent-x);
+}
+
+.cell.o {
+  color: var(--accent-o);
+}
+
+.cell.taken {
+  background: #2a3a55;
+}
